@@ -1,0 +1,30 @@
+За да ги проверам JSONPath изразите користев https://jsonpath.com/ .
+
+1. Прикажи го името на едукативниот центар.
+$.eduCenterName
+
+2.Прикажи информации за 5-тиот сертификат.
+$.certificates[4]
+
+3.Прикажи информации за кандидатот на кој се однесува 3-тиот сертификат.
+$.certificates[2].candidate
+
+4.Прикажи ги матичните броеви на сите кандидати.
+$..ssn
+
+5.Прикажи ги имињата на кандидатите за кои се наменети сертификатите од реден број 3 до реден број 6.
+$.certificates[2:5].candidate.firstName
+
+6.Прикажи информации за сите кандидати кои имаат сертификат за "успешно завршен курс". 
+//За посетуван курс "typeOfCertificate" е false
+//За успешно завршен курс "typeOfCertificate" е true
+$.certificates[?(@.certificateInfo=true)].candidate
+
+7.Прикажи ги сите сертификати кои во своето име го содржат зборот "Java".
+$.certificates[?(@.certificateInfo.courseName contains 'Java')].certificateInfo
+
+8.Прикажи ги сите сертификати кои се однесуваат на курсеви од 100 и 200 часови.
+$.certificates[?(@.certificateInfo.totalHours in [100, 200] )]
+
+9.Прикажи ги кандидатите кои зеле сертификат на 26-01-2021 и 26-02-2021 за посетуван курс.
+$.certificates[?((@.certificateInfo.date=='26-02-2021' || @.certificateInfo.date=='26-01-2021') && @.certificateInfo.typeOfCertificate==false )]

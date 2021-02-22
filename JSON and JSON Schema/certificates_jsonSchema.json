@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "certificateInfo": {
+      "type": "object",
+      "required": [
+        "typeOfCertificate",
+        "courseName",
+        "totalHours",
+        "date"
+      ],
+      "properties": {
+        "typeOfCertificate": {
+          "type": "boolean"
+        },
+        "courseName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "totalHours": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "date": {
+          "type": "string"
+        }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "required": [
+        "firstName",
+        "lastName",
+        "ssn"
+      ],
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lastName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ssn": {
+          "type": "string",
+          "minLength": 13,
+          "maxLength": 13
+        }
+      }
+    },
+    "certificate": {
+      "type": "object",
+      "required": [
+        "candidate",
+        "certificateInfo"
+      ],
+      "properties": {
+        "candidate": {
+          "$ref": "#/definitions/candidate"
+        },
+        "certificateInfo": {
+          "$ref": "#/definitions/certificateInfo"
+        }
+      }
+    },
+    "certificates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/certificate"
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "eduCenterName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "certificates": {
+      "$ref": "#/definitions/certificates"
+    }
+  }
+}

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:complexType name="address_type">
+    <xs:sequence>
+      <xs:element name="street" type="xs:string"/>
+      <xs:element name="number" type="xs:nonNegativeInteger"/>
+      <xs:element name="zip" type="xs:nonNegativeInteger"/>
+      <xs:element name="city" type="xs:string"/>
+      <xs:element name="country" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="platform_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Zoom"/>
+      <xs:enumeration value="BBB"/>
+      <xs:enumeration value="Google Teams"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="lessons_type" mixed="true">
+    <xs:choice>
+      <xs:element name="inperson">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="room_number" type="xs:nonNegativeInteger"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="online">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="platform" type="platform_type"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+  <xs:simpleType name="ssn_type">
+    <xs:restriction base="xs:string">
+      <xs:length value="13"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="phone_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{3}/[0-9]{3}-[0-9]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:group name="person">
+    <xs:sequence>
+      <xs:element name="first_name" type="xs:string"/>
+      <xs:element name="last_name" type="xs:string"/>
+      <xs:element name="address" type="address_type"/>
+      <xs:element name="birth_date" type="xs:date"/>
+      <xs:element name="email" type="xs:string"/>
+      <xs:element name="phone_number" type="phone_type"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="candidate_type">
+    <xs:sequence>
+      <xs:group ref="person"/>
+    </xs:sequence>
+    <xs:attribute name="ssn_candidate" type="ssn_type" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="candidates_type">
+    <xs:sequence>
+      <xs:element name="candidate" type="candidate_type" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="education_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="certificate"/>
+      <xs:enumeration value="doctoral"/>
+      <xs:enumeration value="master"/>
+      <xs:enumeration value="bachelor"/>
+      <xs:enumeration value="associate degree"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="lecturer_type">
+    <xs:sequence>
+      <xs:group ref="person"/>
+      <xs:element name="education" type="education_type"/>
+    </xs:sequence>
+    <xs:attribute name="ssn_lecturer" type="ssn_type" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="lecturers_type">
+    <xs:sequence>
+      <xs:element name="lecturer" type="lecturer_type" minOccurs="1" maxOccurs="50"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="candidate_group_type">
+    <xs:attribute name="ssn_candidate" type="ssn_type" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="location_type">
+    <xs:sequence>
+      <xs:element name="address" type="address_type"/>
+      <xs:element name="capacity" type="xs:nonNegativeInteger"/>
+      <xs:element name="lesson_type" type="lessons_type"/>
+    </xs:sequence>
+    <xs:attribute name="location_id" type="xs:nonNegativeInteger" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="group_type">
+    <xs:sequence>
+      <xs:element name="candidate_belongs_to_group" type="candidate_group_type"/>
+    </xs:sequence>
+    <xs:attribute name="id_group" type="xs:nonNegativeInteger" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="groups_type">
+    <xs:sequence>
+      <xs:element type="group_type" name="group" minOccurs="0" maxOccurs="10"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="type_program_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="course"/>
+      <xs:enumeration value="academy"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="code_type">
+    <xs:restriction base="xs:string">
+      <xs:length value="7"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="education_program_type">
+    <xs:sequence>
+      <xs:element name="name_program" type="xs:string"/>
+      <xs:element name="type_program" type="type_program_type"/>
+      <xs:element name="description" type="xs:string"/>
+      <xs:element name="total_lectures" type="xs:nonNegativeInteger"/>
+      <xs:element name="program_price" type="xs:nonNegativeInteger"/>
+      <xs:element name="start_date" type="xs:date"/>
+      <xs:element name="groups" type="groups_type"/>
+    </xs:sequence>
+    <xs:attribute name="code_program" type="code_type" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="education_programs_type">
+    <xs:sequence>
+      <xs:element name="education_program" type="education_program_type" minOccurs="1" maxOccurs="15"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="lecturer_teach_lecture_type">
+    <xs:attribute name="ssn_lecturer" type="ssn_type" use="required"/>
+  </xs:complexType>
+  <xs:simpleType name="code_lecture_type">
+    <xs:restriction base="xs:string">
+      <xs:length value="9"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="duration_hours_type">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="lecture_type">
+    <xs:sequence>
+      <xs:element name="lecture_number" type="xs:nonNegativeInteger"/>
+      <xs:element name="on_date" type="xs:date"/>
+      <xs:element name="start_hour" type="xs:time"/>
+      <xs:element name="duration_hours" type="duration_hours_type"/>
+      <xs:element name="location" type="location_type"/>
+      <xs:element name="lecturer_teach_lecture" type="lecturer_teach_lecture_type"/>
+    </xs:sequence>
+    <xs:attribute name="code_lecture" type="code_lecture_type"/>
+  </xs:complexType>
+  <xs:complexType name="schedule_type">
+    <xs:sequence>
+      <xs:element name="from_date" type="xs:date"/>
+      <xs:element name="to_date" type="xs:date"/>
+      <xs:element name="lectures">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="lecture" type="lecture_type" minOccurs="1" maxOccurs="50"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:integer" name="id_schedule" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="schedules_type">
+    <xs:sequence>
+      <xs:element name="schedule" type="schedule_type" minOccurs="1" maxOccurs="5"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="education_center_type">
+    <xs:sequence>
+      <xs:element name="name_of_center" type="xs:string"/>
+      <xs:element name="education_programs" type="education_programs_type"/>
+      <xs:element name="lecturers" type="lecturers_type"/>
+      <xs:element name="candidates" type="candidates_type"/>
+      <xs:element name="schedules" type="schedules_type"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="education_centers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="education_center" type="education_center_type" minOccurs="1" maxOccurs="50"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+
+
+
+
+
+
+

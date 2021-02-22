@@ -1,0 +1,86 @@
+{
+  "eduCenterName": "IW Education Center",
+  "certificates": [
+    {
+      "candidate": {
+        "firstName": "Trajanka",
+        "lastName": "Trajanovska",
+        "ssn": "4443335556662"
+      },
+      "certificateInfo": {
+        "typeOfCertificate": false,
+        "courseName": "Programming in Java",
+        "totalHours": 200,
+        "date": "25-01-2021"
+      }
+    },
+    {
+      "candidate": {
+        "firstName": "Petre",
+        "lastName": "Petrevski",
+        "ssn": "4443345556662"
+      },
+      "certificateInfo": {
+        "typeOfCertificate": true,
+        "courseName": "Programming in Java",
+        "totalHours": 200,
+        "date": "25-01-2021"
+      }
+    },
+    {
+      "candidate": {
+        "firstName": "Mile",
+        "lastName": "Milevski",
+        "ssn": "1113345556662"
+      },
+      "certificateInfo": {
+        "typeOfCertificate": true,
+        "courseName": "JDBC",
+        "totalHours": 100,
+        "date": "26-01-2021"
+      }
+    },
+    {
+      "candidate": {
+        "firstName": "Milica",
+        "lastName": "Milicovska",
+        "ssn": "2223345556662"
+      },
+      "certificateInfo": {
+        "typeOfCertificate": false,
+        "courseName": "JDBC",
+        "totalHours": 100,
+        "date": "26-01-2021"
+      }
+    },
+    {
+      "candidate": {
+        "firstName": "Ana",
+        "lastName": "Anovska",
+        "ssn": "1116665556662"
+      },
+      "certificateInfo": {
+        "typeOfCertificate": true,
+        "courseName": "HTML,CSS & JavaScript",
+        "totalHours": 180,
+        "date": "26-02-2021"
+      }
+    },
+    {
+      "candidate": {
+        "firstName": "Joco",
+        "lastName": "Jocevski",
+        "ssn": "2223345551112"
+      },
+      "certificateInfo": {
+        "typeOfCertificate": false,
+        "courseName": "HTML,CSS & JavaScript",
+        "totalHours": 180,
+        "date": "26-02-2021"
+      }
+    }
+  ]
+}
+
+
+		  

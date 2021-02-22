@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="education_centers.xsl"?>
+<education_centers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///C:/Users/Teodora/Desktop/Documents/XmlPad%20Projects/education_centers.xsd">
+  <education_center>
+    <name_of_center>Centar za edukacija A</name_of_center>
+    <education_programs>
+      <education_program code_program="CS00000">
+        <name_program>Java Full Stack</name_program>
+        <type_program>academy</type_program>
+        <description>The full stack developer definition is “someone who can work on both the back-end and front-end of systems.” This means that they can develop fully fledged platforms (with databases, servers and clients) which don’t need other applications to function.</description>
+        <total_lectures>300</total_lectures>
+        <program_price>30000</program_price>
+        <!-- cenata e vo denari -->
+        <start_date>2021-01-15</start_date>
+        <groups>
+          <group id_group="1">
+            <candidate_belongs_to_group ssn_candidate="0000123456789"/>
+          </group>
+        </groups>
+      </education_program>
+      <education_program code_program="CS00001">
+        <name_program>JDBC</name_program>
+        <type_program>course</type_program>
+        <description>JDBC stands for Java Database Connectivity and provides a basic API to connect a database and read/write data. You can execute SQL queries, call stored procedures, and parse ResultSet to create Java objects.</description>
+        <total_lectures>150</total_lectures>
+        <program_price>15000</program_price>
+        <!-- cenata e vo denari -->
+        <start_date>2021-01-15</start_date>
+        <groups>
+          <group id_group="2">
+            <candidate_belongs_to_group ssn_candidate="0000123456789"/>
+          </group>
+        </groups>
+      </education_program>
+    </education_programs>
+    <lecturers>
+      <lecturer ssn_lecturer="1234567890000">
+        <first_name>Jadranka</first_name>
+        <last_name>Jadranovska</last_name>
+        <address>
+          <street>Ulica</street>
+          <number>11</number>
+          <zip>8000</zip>
+          <city>Grad</city>
+          <country>Drzava</country>
+        </address>
+        <birth_date>1970-10-10</birth_date>
+        <email>nekojemail@yahoo.com</email>
+        <phone_number>075/555-999</phone_number>
+        <education>bachelor</education>
+      </lecturer>
+      <lecturer ssn_lecturer="1234567890011">
+        <first_name>Tome</first_name>
+        <last_name>Tomevski</last_name>
+        <address>
+          <street>Ulica</street>
+          <number>15</number>
+          <zip>6000</zip>
+          <city>Grad</city>
+          <country>Drzava</country>
+        </address>
+        <birth_date>1975-11-10</birth_date>
+        <email>nekojemail11@yahoo.com</email>
+        <phone_number>075/666-999</phone_number>
+        <education>doctoral</education>
+      </lecturer>
+      <lecturer ssn_lecturer="1234567890011">
+        <first_name>Ana</first_name>
+        <last_name>Anovska</last_name>
+        <address>
+          <street>Ulica</street>
+          <number>10</number>
+          <zip>7000</zip>
+          <city>Bitola</city>
+          <country>Drzava</country>
+        </address>
+        <birth_date>1975-11-10</birth_date>
+        <email>nekojemail11@yahoo.com</email>
+        <phone_number>075/666-999</phone_number>
+        <education>doctoral</education>
+      </lecturer>
+    </lecturers>
+    <candidates>
+      <candidate ssn_candidate="0000123456789">
+        <first_name>Filip</first_name>
+        <last_name>Filipovski</last_name>
+        <address>
+          <street>Nekoja ulica</street>
+          <number>11</number>
+          <zip>7000</zip>
+          <city>Bitola</city>
+          <country>Drzava</country>
+        </address>
+        <birth_date>1970-10-10</birth_date>
+        <email>nekojemail@yahoo.com</email>
+        <phone_number>075/555-999</phone_number>
+      </candidate>
+      <candidate ssn_candidate="0000123456789">
+        <first_name>Petranka</first_name>
+        <last_name>Petranovsk</last_name>
+        <address>
+          <street>Nekoja ulica</street>
+          <number>11</number>
+          <zip>0000</zip>
+          <city>Prilep</city>
+          <country>Drzava</country>
+        </address>
+        <birth_date>1970-10-10</birth_date>
+        <email>nekojemail@yahoo.com</email>
+        <phone_number>075/555-999</phone_number>
+      </candidate>
+    </candidates>
+    <schedules>
+      <schedule id_schedule="1">
+        <from_date>2020-12-06</from_date>
+        <to_date>2021-05-05</to_date>
+        <lectures>
+          <lecture code_lecture="AB1234567">
+            <lecture_number>1</lecture_number>
+            <on_date>2020-12-01</on_date>
+            <start_hour>15:00:00</start_hour>
+            <duration_hours>1</duration_hours>
+            <location location_id="1">
+              <address>
+                <street>Nekoja ulica</street>
+                <number>11</number>
+                <zip>8000</zip>
+                <city>Grad</city>
+                <country>Drzava</country>
+              </address>
+              <capacity>20</capacity>
+              <lesson_type>
+                <online>
+                  <platform>Zoom</platform>
+                </online>
+              </lesson_type>
+            </location>
+            <lecturer_teach_lecture ssn_lecturer="1234567890000"/>
+          </lecture>
+          <lecture code_lecture="AB1234566">
+            <lecture_number>5</lecture_number>
+            <on_date>2020-12-01</on_date>
+            <start_hour>15:00:00</start_hour>
+            <duration_hours>2</duration_hours>
+            <location location_id="1">
+              <address>
+                <street>Nekoja ulica</street>
+                <number>11</number>
+                <zip>8000</zip>
+                <city>Grad</city>
+                <country>Drzava</country>
+              </address>
+              <capacity>20</capacity>
+              <lesson_type>
+                <online>
+                  <platform>Zoom</platform>
+                </online>
+              </lesson_type>
+            </location>
+            <lecturer_teach_lecture ssn_lecturer="1234567890000"/>
+          </lecture>
+          <lecture code_lecture="AB1234555">
+            <lecture_number>3</lecture_number>
+            <on_date>2020-12-01</on_date>
+            <start_hour>15:00:00</start_hour>
+            <duration_hours>2</duration_hours>
+            <location location_id="1">
+              <address>
+                <street>Nekoja ulica</street>
+                <number>11</number>
+                <zip>8000</zip>
+                <city>Grad</city>
+                <country>Drzava</country>
+              </address>
+              <capacity>20</capacity>
+              <lesson_type>
+                <online>
+                  <platform>Zoom</platform>
+                </online>
+              </lesson_type>
+            </location>
+            <lecturer_teach_lecture ssn_lecturer="1234567890000"/>
+          </lecture>
+        </lectures>
+      </schedule>
+    </schedules>
+  </education_center>
+</education_centers>
+
+
+
+
